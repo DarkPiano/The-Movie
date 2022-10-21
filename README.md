@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+You will need a username and password to start:
+username: admin,
+password: admin.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
