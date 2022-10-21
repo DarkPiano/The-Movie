@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:the_novie_db/widgets/main%20screen/main_screen_widget.dart';
 import '../../Theme/button_style.dart';
 
 class AuthWidget extends StatefulWidget {
@@ -93,7 +94,11 @@ class _FormWidgetState extends State<_FormWidget> {
     final password = _passwordTextController.text;
     if (login == 'admin' && password == 'admin') {
       errorText = null;
-      print('open app');
+      final navigator = Navigator.of(context);
+      //pushNamed добавление нового стека
+      navigator.pushNamed('/main_screen');
+      //pushReplacementNamed замена старого стека на новый
+      // navigator.pushReplacementNamed('/main_screen');
     } else {
       errorText = 'Invalid username or password';
     }

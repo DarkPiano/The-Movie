@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/widgets/auth/auth_widget.dart';
+import 'package:the_novie_db/widgets/main%20screen/main_screen_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,11 +15,15 @@ class MyApp extends StatelessWidget {
       // debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        appBarTheme:  const AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: Color.fromRGBO(3, 37, 65, 1),
         ),
       ),
-      home: AuthWidget(),
+      routes: {
+        '/auth': (context) => AuthWidget(),
+        '/main_screen': (context) => MainScreenWidget(),
+      },
+      initialRoute: '/auth',
     );
   }
 }
