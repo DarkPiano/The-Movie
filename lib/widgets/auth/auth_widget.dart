@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import '../../Theme/button_style.dart';
 
@@ -14,11 +16,11 @@ class _AuthWidgetState extends State<AuthWidget> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Login to your account'),
+        title: const Text('Login to your account'),
       ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
-        children: [
+        physics: const BouncingScrollPhysics(),
+        children: const [
           _HeaderWidget(),
           // _HeaderWidget(),
         ],
@@ -41,32 +43,32 @@ class _HeaderWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 25),
-          _FormWidget(),
-          SizedBox(height: 25),
-          Text(
+          const SizedBox(height: 25),
+          const _FormWidget(),
+          const SizedBox(height: 25),
+          const Text(
             'In order in use the editing and rating capabilities of TMDb,'
             'as well as get personal recommendations you will need to login'
             ' to your account. If you do not have an account, registering for '
             'an account is free and simple.',
             style: textStyle,
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           TextButton(
             style: AppButtonStyle.linkButton,
             onPressed: () {},
-            child: Text('Register'),
+            child: const Text('Register'),
           ),
-          SizedBox(height: 25),
-          Text(
+          const SizedBox(height: 25),
+          const Text(
             'If you signed up but didn`t get your verification email.',
             style: textStyle,
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           TextButton(
             style: AppButtonStyle.linkButton,
             onPressed: () {},
-            child: Text('Verifi email'),
+            child: const Text('Verifi email'),
           ),
         ],
       ),
@@ -84,7 +86,7 @@ class _FormWidget extends StatefulWidget {
 class _FormWidgetState extends State<_FormWidget> {
   final _loginTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
-  String? errorText = null;
+  String? errorText;
 
   void _auth() {
     final login = _loginTextController.text;
@@ -123,23 +125,23 @@ class _FormWidgetState extends State<_FormWidget> {
       children: [
         if (errorText != null) ...[
           Text(
-            '$errorText',
-            style: TextStyle(fontSize: 17, color: Colors.red),
+            errorText,
+            style: const TextStyle(fontSize: 17, color: Colors.red),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
-        Text('Username', style: textStyle),
-        SizedBox(height: 5),
+        const Text('Username', style: textStyle),
+        const SizedBox(height: 5),
         TextField(
             controller: _loginTextController, decoration: textFieldDecoration),
-        SizedBox(height: 20),
-        Text('Password', style: textStyle),
-        SizedBox(height: 5),
+        const SizedBox(height: 20),
+        const Text('Password', style: textStyle),
+        const SizedBox(height: 5),
         TextField(
             controller: _passwordTextController,
             decoration: textFieldDecoration,
             obscureText: true),
-        SizedBox(height: 25),
+        const SizedBox(height: 25),
         Row(
           children: [
             ElevatedButton(
@@ -147,19 +149,19 @@ class _FormWidgetState extends State<_FormWidget> {
                 backgroundColor: MaterialStateProperty.all(color),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
                 textStyle: MaterialStateProperty.all(
-                  TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                 ),
                 padding: MaterialStateProperty.all(
-                    EdgeInsets.symmetric(horizontal: 15, vertical: 8)),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 8)),
               ),
               onPressed: _auth,
-              child: Text('Login'),
+              child: const Text('Login'),
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
             TextButton(
               style: AppButtonStyle.linkButton,
               onPressed: _resetPassword,
-              child: Text('Reset password'),
+              child: const Text('Reset password'),
             ),
           ],
         ),
