@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       routes: {
-        '/auth': (context) => AuthWidget(),
-        '/main_screen': (context) => MainScreenWidget(),
+        '/auth': (context) => const AuthWidget(),
+        '/main_screen': (context) => const MainScreenWidget(),
       },
       initialRoute: '/auth',
     );

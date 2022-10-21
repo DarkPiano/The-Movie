@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:the_novie_db/widgets/main%20screen/main_screen_widget.dart';
 import '../../Theme/button_style.dart';
 
 class AuthWidget extends StatefulWidget {
