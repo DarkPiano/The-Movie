@@ -114,7 +114,7 @@ class _FormWidgetState extends State<_FormWidget> {
       fontSize: 16,
       color: Color(0xFF212529),
     );
-    const color = Color(0xFF01B4E4);
+    // const color = Color(0xFF01B4E4);
     const textFieldDecoration = InputDecoration(
       border: OutlineInputBorder(),
       contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -150,7 +150,7 @@ class _FormWidgetState extends State<_FormWidget> {
           children: [
             ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(color),
+                backgroundColor: MaterialStateProperty.all(const Color(0xFF01B4E4)),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
                 textStyle: MaterialStateProperty.all(
                   const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
