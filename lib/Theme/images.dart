@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
 abstract class AppImages {
-  static const tower = AssetImage('images/tower.jpeg');
+  static const fall = AssetImage('images/fall.jpeg');
 }
