@@ -25,6 +25,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
         title: const Text('TMDB'),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedTab,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
