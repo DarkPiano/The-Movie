@@ -8,6 +8,15 @@ class MainScreenWidget extends StatefulWidget {
 }
 
 class _MainScreenWidgetState extends State<MainScreenWidget> {
+  int _selectedTab = 0;
+
+  void _onItemTab (int index) {
+    if(_selectedTab == index) return;
+    setState(() {
+      _selectedTab = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +39,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
             label: 'Series',
           ),
         ],
+        onTap: _onItemTab,
       ),
     );
   }
