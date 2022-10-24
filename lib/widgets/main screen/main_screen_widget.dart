@@ -31,7 +31,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
             label: 'News',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.movie),
+            icon: Icon(Icons.movie_filter),
             label: 'Movie',
           ),
           BottomNavigationBarItem(
