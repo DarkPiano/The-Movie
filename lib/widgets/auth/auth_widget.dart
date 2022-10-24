@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../Theme/button_style.dart';
 
 class AuthWidget extends StatefulWidget {
@@ -137,20 +138,32 @@ class _FormWidgetState extends State<_FormWidget> {
         const Text('Username', style: textStyle),
         const SizedBox(height: 5),
         TextField(
-            controller: _loginTextController, decoration: textFieldDecoration),
-        const SizedBox(height: 20),
+          maxLength: 14,
+          maxLengthEnforcement: MaxLengthEnforcement.enforced,
+          controller: _loginTextController,
+          decoration: textFieldDecoration,
+        ),
+        const SizedBox(height: 10),
         const Text('Password', style: textStyle),
         const SizedBox(height: 5),
         TextField(
-            controller: _passwordTextController,
-            decoration: textFieldDecoration,
-            obscureText: true),
-        const SizedBox(height: 25),
+          controller: _passwordTextController,
+          decoration: textFieldDecoration,
+          maxLength: 20,
+          //Обязательно для поля ввода пароля
+          obscureText: true,
+          obscuringCharacter: '*',
+          autocorrect: false,
+          enableSuggestions: false,
+          //
+        ),
+        const SizedBox(height: 10),
         Row(
           children: [
             ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(const Color(0xFF01B4E4)),
+                backgroundColor:
+                    MaterialStateProperty.all(const Color(0xFF01B4E4)),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
                 textStyle: MaterialStateProperty.all(
                   const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
