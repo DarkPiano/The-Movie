@@ -144,7 +144,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                           color: Colors.black.withOpacity(0.2),
                         ),
                         borderRadius:
-                        const BorderRadius.all(Radius.circular(10)),
+                            const BorderRadius.all(Radius.circular(10)),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.1),
@@ -155,7 +155,8 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                     clipBehavior: Clip.hardEdge,
                     child: Row(
                       children: [
-                        Image(image: AssetImage(movie.imageName)),
+                        Flexible(child: Image(image: AssetImage(movie.imageName),fit: BoxFit.cover, width: 110,),),
+                        // Image(image: AssetImage(movie.imageName),fit: BoxFit.cover,),
                         const SizedBox(width: 15),
                         Expanded(
                           child: Column(
