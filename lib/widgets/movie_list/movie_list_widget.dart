@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import '../../resources/resources.dart';
 
 class Movie {
+  final int id;
   final String imageName;
   final String title;
   final String time;
   final String subtitle;
 
   Movie({
+    required this.id,
     required this.imageName,
     required this.title,
     required this.time,
@@ -16,7 +18,7 @@ class Movie {
 }
 
 class MovieListWidget extends StatefulWidget {
-  MovieListWidget({Key? key}) : super(key: key);
+  const MovieListWidget({Key? key}) : super(key: key);
 
   @override
   _MovieListWidgetState createState() => _MovieListWidgetState();
@@ -25,6 +27,7 @@ class MovieListWidget extends StatefulWidget {
 class _MovieListWidgetState extends State<MovieListWidget> {
   final _movies = [
     Movie(
+      id: 1,
       imageName: AppImages.fall,
       title: 'Fall',
       time: 'August 10, 2022',
@@ -38,6 +41,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           'adrenaline-fueled thriller co-starring Jeffrey Dean Morgan.',
     ),
     Movie(
+      id: 2,
       imageName: AppImages.fullmetalAlchemistKanketsuhenFukushushaScarP1,
       title: 'Fullmetal Alchemist: Final Chapter - The Last Transmutation',
       time: 'June 24, 2022',
@@ -46,6 +50,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           'unworldly, nationwide threat.',
     ),
     Movie(
+      id: 3,
       imageName: AppImages.blackAdam,
       title: 'Black Adam',
       time: 'October 19, 2022',
@@ -55,6 +60,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           'form of justice on the modern world.',
     ),
     Movie(
+      id: 4,
       imageName: AppImages.thePeripheral,
       title: 'The Peripheral',
       time: 'October 21, 2022',
@@ -63,6 +69,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           'well as a dark future of her own.',
     ),
     Movie(
+      id: 5,
       imageName: AppImages.theBatman,
       title: 'The Batman',
       time: 'March 1, 2022',
@@ -71,6 +78,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           'corruption and question his familys involvement.',
     ),
     Movie(
+      id: 6,
       imageName: AppImages.doctorStrangeInTheMultiverseOfMadness,
       title: 'Doctor Strange in the Multiverse of Madness',
       time: 'May 2, 2022',
@@ -81,6 +89,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           'help from Wanda the Scarlet Witch, Wong and others.',
     ),
     Movie(
+      id: 7,
       imageName: AppImages.avatarTheWayOfWater,
       title: 'Avatar: The Way of Water',
       time: 'December 14, 2022',
@@ -90,6 +99,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           'of the Navi race to protect their planet.',
     ),
     Movie(
+      id: 8,
       imageName: AppImages.blackPantherWakandaForever,
       title: 'Black Panther: Wakanda Forever',
       time: 'November 14, 2022',
@@ -119,6 +129,14 @@ class _MovieListWidgetState extends State<MovieListWidget> {
     super.initState();
     _searchMovies();
     _searchController.addListener(_searchMovies);
+  }
+
+  void _omMovieTap(int index) {
+    final id = _movies[index].id;
+    Navigator.of(context).pushNamed(
+      '/main_screen/movie_details_widget',
+      arguments: id,
+    );
   }
 
   @override
@@ -155,7 +173,13 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                     clipBehavior: Clip.hardEdge,
                     child: Row(
                       children: [
-                        Flexible(child: Image(image: AssetImage(movie.imageName),fit: BoxFit.cover, width: 110,),),
+                        Flexible(
+                          child: Image(
+                            image: AssetImage(movie.imageName),
+                            fit: BoxFit.cover,
+                            width: 110,
+                          ),
+                        ),
                         // Image(image: AssetImage(movie.imageName),fit: BoxFit.cover,),
                         const SizedBox(width: 15),
                         Expanded(
@@ -194,9 +218,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                     color: Colors.transparent,
                     child: InkWell(
                       borderRadius: BorderRadius.circular(10),
-                      onTap: () {
-                        print('1');
-                      },
+                      onTap: () => _omMovieTap(index),
                     ),
                   ),
                 ],
