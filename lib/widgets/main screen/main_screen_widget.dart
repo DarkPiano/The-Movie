@@ -19,12 +19,6 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
     });
   }
 
-  static final List<Widget> _widgetOption = <Widget>[
-    const Text('News'),
-    MovieListWidget(),
-    const Text('Series'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +26,13 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
         centerTitle: true,
         title: const Text('TMDB'),
       ),
-      body: Center(
-        child: _widgetOption[_selectedTab],
+      body: IndexedStack(
+        index: _selectedTab,
+        children: [
+          const Text('News'),
+          MovieListWidget(),
+          const Text('Series'),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTab,
