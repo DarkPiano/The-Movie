@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../Theme/images.dart';
+import '../../resources/resources.dart';
 
 class Movie {
   final String imageName;
@@ -12,19 +12,29 @@ class Movie {
     required this.title,
     required this.time,
     required this.subtitle,
-});
+  });
 }
 
 class MovieListWidget extends StatelessWidget {
-  const MovieListWidget({Key? key}) : super(key: key);
+  final _movies = [
+    Movie(
+      imageName: AppImages.fall,
+      title: 'Fall',
+      time: 'August 10, 2022',
+      subtitle: 'For best friends Becky (Grace Caroline Currey) and Hunter (Virginia Gardner), life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote, abandoned radio tower, they find themselves stranded with no way down. Now Becky and Hunter’s expert climbing skills will be put to the ultimate test as they desperately fight to survive the elements, a lack of supplies, and vertigo-inducing heights in this adrenaline-fueled thriller co-starring Jeffrey Dean Morgan.',
+    ),
+  ];
+
+  MovieListWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      physics: BouncingScrollPhysics(),
-      itemCount: 10,
+      physics: const BouncingScrollPhysics(),
+      itemCount: _movies.length,
       itemExtent: 163,
       itemBuilder: (BuildContext context, int index) {
+        final movie = _movies[index];
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           child: Stack(
@@ -35,63 +45,47 @@ class MovieListWidget extends StatelessWidget {
                     border: Border.all(
                       color: Colors.black.withOpacity(0.2),
                     ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.1),
                         blurRadius: 8,
-                        offset: Offset(0, 2),
+                        offset: const Offset(0, 2),
                       ),
                     ]),
                 clipBehavior: Clip.hardEdge,
                 child: Row(
                   children: [
-                    Image(image: AppImages.fall),
-                    SizedBox(
-                      width: 15,
-                    ),
+                    Image(image: AssetImage(movie.imageName)),
+                    const SizedBox(width: 15),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
-                            height: 20,
-                          ),
+                          const SizedBox(height: 20),
                           Text(
-                            'Fall',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                            movie.title,
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          const SizedBox(height: 5),
                           Text(
-                            'August 10, 2022',
-                            style: TextStyle(
-                              color: Colors.grey,
-                            ),
+                            movie.time,
+                            style: const TextStyle(color: Colors.grey),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-                          SizedBox(
-                            height: 20,
-                          ),
+                          const SizedBox(height: 20),
                           Text(
-                            'For best friends Becky (Grace Caroline Currey) and Hunter (Virginia Gardner), life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote, abandoned radio tower, they find themselves stranded with no way down. Now Becky and Hunter’s expert climbing skills will be put to the ultimate test as they desperately fight to survive the elements, a lack of supplies, and vertigo-inducing heights in this adrenaline-fueled thriller co-starring Jeffrey Dean Morgan.',
+                            movie.subtitle,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(
-                      width: 15,
-                    ),
+                    const SizedBox(width: 15),
                   ],
                 ),
               ),

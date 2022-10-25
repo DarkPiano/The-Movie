@@ -19,10 +19,10 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
     });
   }
 
-  static const List<Widget> _widgetOption = <Widget>[
-    Text('News'),
+  static final List<Widget> _widgetOption = <Widget>[
+    const Text('News'),
     MovieListWidget(),
-    Text('Series'),
+    const Text('Series'),
   ];
 
   @override
