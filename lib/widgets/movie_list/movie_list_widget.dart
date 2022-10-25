@@ -15,7 +15,14 @@ class Movie {
   });
 }
 
-class MovieListWidget extends StatelessWidget {
+class MovieListWidget extends StatefulWidget {
+  MovieListWidget({Key? key}) : super(key: key);
+
+  @override
+  _MovieListWidgetState createState() => _MovieListWidgetState();
+}
+
+class _MovieListWidgetState extends State<MovieListWidget> {
   final _movies = [
     Movie(
       imageName: AppImages.fall,
@@ -31,12 +38,12 @@ class MovieListWidget extends StatelessWidget {
           'adrenaline-fueled thriller co-starring Jeffrey Dean Morgan.',
     ),
     Movie(
-        imageName: AppImages.fullmetalAlchemistKanketsuhenFukushushaScarP1,
-        title: 'Fullmetal Alchemist: Final Chapter - The Last Transmutation',
-        time: 'June 24, 2022',
-        subtitle: 'The Elric brothers long and winding journey comes to a '
-            'close in this epic finale, where they must face off against an '
-            'unworldly, nationwide threat.',
+      imageName: AppImages.fullmetalAlchemistKanketsuhenFukushushaScarP1,
+      title: 'Fullmetal Alchemist: Final Chapter - The Last Transmutation',
+      time: 'June 24, 2022',
+      subtitle: 'The Elric brothers long and winding journey comes to a '
+          'close in this epic finale, where they must face off against an '
+          'unworldly, nationwide threat.',
     ),
     Movie(
       imageName: AppImages.blackAdam,
@@ -74,100 +81,141 @@ class MovieListWidget extends StatelessWidget {
           'help from Wanda the Scarlet Witch, Wong and others.',
     ),
     Movie(
-        imageName: AppImages.avatarTheWayOfWater,
-        title: 'Avatar: The Way of Water',
-        time: 'December 14, 2022',
-        subtitle: 'Jake Sully lives with his newfound family formed on the '
-            'planet of Pandora. Once a familiar threat returns to finish what '
-            'was previously started, Jake must work with Neytiri and the army '
-            'of the Navi race to protect their planet.',
+      imageName: AppImages.avatarTheWayOfWater,
+      title: 'Avatar: The Way of Water',
+      time: 'December 14, 2022',
+      subtitle: 'Jake Sully lives with his newfound family formed on the '
+          'planet of Pandora. Once a familiar threat returns to finish what '
+          'was previously started, Jake must work with Neytiri and the army '
+          'of the Navi race to protect their planet.',
     ),
     Movie(
-        imageName: AppImages.blackPantherWakandaForever,
-        title: 'Black Panther: Wakanda Forever',
-        time: 'November 14, 2022',
-        subtitle: 'The nation of Wakanda is pitted against intervening world '
-            'powers as they mourn the loss of their king TChalla.',
+      imageName: AppImages.blackPantherWakandaForever,
+      title: 'Black Panther: Wakanda Forever',
+      time: 'November 14, 2022',
+      subtitle: 'The nation of Wakanda is pitted against intervening world '
+          'powers as they mourn the loss of their king TChalla.',
     ),
   ];
 
-  MovieListWidget({Key? key}) : super(key: key);
+  var _filterMovies = <Movie>[];
+
+  final _searchController = TextEditingController();
+
+  void _searchMovies() {
+    final query = _searchController.text;
+    if (query.isNotEmpty) {
+      _filterMovies = _movies.where((Movie movie) {
+        return movie.title.toLowerCase().contains(query.toLowerCase());
+      }).toList();
+    } else {
+      _filterMovies = _movies;
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _searchMovies();
+    _searchController.addListener(_searchMovies);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: const BouncingScrollPhysics(),
-      itemCount: _movies.length,
-      itemExtent: 163,
-      itemBuilder: (BuildContext context, int index) {
-        final movie = _movies[index];
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          child: Stack(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(
-                      color: Colors.black.withOpacity(0.2),
+    return Stack(
+      children: [
+        ListView.builder(
+          padding: const EdgeInsets.only(top: 70),
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          physics: const BouncingScrollPhysics(),
+          itemCount: _filterMovies.length,
+          itemExtent: 163,
+          itemBuilder: (BuildContext context, int index) {
+            final movie = _filterMovies[index];
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(
+                          color: Colors.black.withOpacity(0.2),
+                        ),
+                        borderRadius:
+                        const BorderRadius.all(Radius.circular(10)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 8,
+                            offset: const Offset(0, 2),
+                          ),
+                        ]),
+                    clipBehavior: Clip.hardEdge,
+                    child: Row(
+                      children: [
+                        Image(image: AssetImage(movie.imageName)),
+                        const SizedBox(width: 15),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 20),
+                              Text(
+                                movie.title,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                movie.time,
+                                style: const TextStyle(color: Colors.grey),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              const SizedBox(height: 20),
+                              Text(
+                                movie.subtitle,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 15),
+                      ],
                     ),
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
-                      ),
-                    ]),
-                clipBehavior: Clip.hardEdge,
-                child: Row(
-                  children: [
-                    Image(image: AssetImage(movie.imageName)),
-                    const SizedBox(width: 15),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 20),
-                          Text(
-                            movie.title,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(height: 5),
-                          Text(
-                            movie.time,
-                            style: const TextStyle(color: Colors.grey),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(height: 20),
-                          Text(
-                            movie.subtitle,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
+                  ),
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(10),
+                      onTap: () {
+                        print('1');
+                      },
                     ),
-                    const SizedBox(width: 15),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(10),
-                  onTap: () {
-                    print('1');
-                  },
-                ),
-              ),
-            ],
+            );
+          },
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: TextField(
+            controller: _searchController,
+            decoration: InputDecoration(
+              labelText: 'Search',
+              filled: true,
+              fillColor: Colors.white.withAlpha(235),
+              border: const OutlineInputBorder(),
+            ),
           ),
-        );
-      },
+        )
+      ],
     );
   }
 }
