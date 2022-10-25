@@ -11,6 +11,7 @@ class AppImages {
   static const String doctorStrangeInTheMultiverseOfMadness =
       'images/Doctor_Strange_in_the_multiverse_of_madness.jpg';
   static const String fall = 'images/Fall.jpg';
+  static const String fallTopHeader = 'images/Fall_topHeader.jpg';
   static const String fullmetalAlchemistKanketsuhenFukushushaScarP1 =
       'images/Fullmetal_alchemist-_kanketsuhen_fukushusha_scar-p1.jpg';
   static const String theBatman = 'images/The_batman.jpg';
