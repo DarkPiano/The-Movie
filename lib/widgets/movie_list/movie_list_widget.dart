@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
 import '../../Theme/images.dart';
 
+class Movie {
+  final String imageName;
+  final String title;
+  final String time;
+  final String subtitle;
+
+  Movie({
+    required this.imageName,
+    required this.title,
+    required this.time,
+    required this.subtitle,
+});
+}
+
 class MovieListWidget extends StatelessWidget {
   const MovieListWidget({Key? key}) : super(key: key);
 
