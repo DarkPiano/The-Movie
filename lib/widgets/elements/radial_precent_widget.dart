@@ -11,15 +11,14 @@ class RadialPersentWdget extends StatelessWidget {
         child: Container(
           width: 100,
           height: 100,
-          decoration: BoxDecoration(border: Border.all(color: Colors.red)),
-          child: RadialPercentWidget(
-            percent: 0.72,
+          child: const RadialPercentWidget(
+            percent: 0.52,
             fillColor: Colors.black,
             lineColor: Colors.green,
             freeColor: Colors.grey,
-            lineWidget: 5,
+            lineWidth: 5,
             child: Text(
-              '72%',
+              '52%',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -38,7 +37,7 @@ class RadialPercentWidget extends StatelessWidget {
   final Color fillColor;
   final Color lineColor;
   final Color freeColor;
-  final double lineWidget;
+  final double lineWidth;
 
   const RadialPercentWidget({
     Key? key,
@@ -47,7 +46,7 @@ class RadialPercentWidget extends StatelessWidget {
     required this.fillColor,
     required this.lineColor,
     required this.freeColor,
-    required this.lineWidget,
+    required this.lineWidth,
   }) : super(key: key);
 
   @override
@@ -61,7 +60,7 @@ class RadialPercentWidget extends StatelessWidget {
           fillColor: fillColor,
           lineColor: lineColor,
           freeColor: freeColor,
-          lineWidget: lineWidget,
+              lineWidth: lineWidth,
         )),
         Padding(
           padding: const EdgeInsets.all(11.0),
@@ -79,46 +78,65 @@ class MyPainter extends CustomPainter {
   final Color fillColor;
   final Color lineColor;
   final Color freeColor;
-  final double lineWidget;
+  final double lineWidth;
 
   MyPainter({
     required this.percent,
     required this.fillColor,
     required this.lineColor,
     required this.freeColor,
-    required this.lineWidget,
+    required this.lineWidth,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
-    final backgroundPaint = Paint();
-    backgroundPaint.color = fillColor;
-    backgroundPaint.style = PaintingStyle.fill;
-    canvas.drawOval(Offset.zero & size, backgroundPaint);
+    final arcRect = calculateArcsRect(size);
+    drawBackground(canvas, size);
+    drawFreeArc(canvas, arcRect);
+    drawFellArc(canvas, arcRect);
+  }
 
-    final filedPaint = Paint();
-    filedPaint.color = freeColor;
-    filedPaint.style = PaintingStyle.stroke;
-    filedPaint.strokeWidth = lineWidget;
+  Rect calculateArcsRect(Size size) {
+    const linesMargin = 3;
+    final offset = lineWidth / 2 + linesMargin;
+    final arcRect = Offset(offset, offset) &
+        Size(size.width - offset * 2, size.height - offset * 2);
+    return arcRect;
+  }
+
+  void drawBackground(Canvas canvas, Size size) {
+    final paint = Paint();
+    paint.color = fillColor;
+    paint.style = PaintingStyle.fill;
+    canvas.drawOval(Offset.zero & size, paint);
+  }
+
+  void drawFreeArc(Canvas canvas, Rect arcRect) {
+    final paint = Paint();
+    paint.color = freeColor;
+    paint.style = PaintingStyle.stroke;
+    paint.strokeWidth = lineWidth;
     canvas.drawArc(
-      Offset(5.5, 5.5) & Size(size.width - 11, size.height - 11),
+      arcRect,
       pi * 2 * percent - (pi / 2),
       pi * 2 * (1.0 - percent),
       false,
-      filedPaint,
+      paint,
     );
+  }
 
-    final feelPaint = Paint();
-    feelPaint.color = lineColor;
-    feelPaint.style = PaintingStyle.stroke;
-    feelPaint.strokeWidth = lineWidget;
-    feelPaint.strokeCap = StrokeCap.round;
+  void drawFellArc(Canvas canvas, Rect arcRect) {
+    final paint = Paint();
+    paint.color = lineColor;
+    paint.style = PaintingStyle.stroke;
+    paint.strokeWidth = lineWidth;
+    paint.strokeCap = StrokeCap.round;
     canvas.drawArc(
-      Offset(5.5, 5.5) & Size(size.width - 11, size.height - 11),
+      arcRect,
       -pi / 2,
       pi * 2 * percent,
       false,
-      feelPaint,
+      paint,
     );
   }
 
