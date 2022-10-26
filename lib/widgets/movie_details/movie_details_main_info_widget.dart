@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/resources/resources.dart';
+import 'package:the_novie_db/widgets/elements/radial_precent_widget.dart';
 
 class MovieDetailsMainInfoWidget extends StatelessWidget {
   const MovieDetailsMainInfoWidget({Key? key}) : super(key: key);
@@ -88,7 +89,7 @@ class _ScroreWidget extends StatelessWidget {
           onPressed: () {},
           child: Row(
             children: const [
-              // RadialPersentWdget(),
+              RadialPersentWdget(),
               Text('User Score'),
             ],
           ),
