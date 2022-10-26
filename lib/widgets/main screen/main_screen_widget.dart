@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:the_novie_db/widgets/elements/radial_precent_widget.dart';
 
 import '../movie_list/movie_list_widget.dart';
 
@@ -29,10 +28,10 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
       ),
       body: IndexedStack(
         index: _selectedTab,
-        children: [
-          RadialPersentWdget(),
+        children: const [
+          Text('News'),
           MovieListWidget(),
-          const Text('Series'),
+          Text('Series'),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

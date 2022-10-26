@@ -1,38 +1,8 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
-
-class RadialPersentWdget extends StatelessWidget {
-  const RadialPersentWdget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        child: Container(
-          width: 100,
-          height: 100,
-          child: const RadialPercentWidget(
-            percent: 0.52,
-            fillColor: Colors.black,
-            lineColor: Colors.green,
-            freeColor: Colors.grey,
-            lineWidth: 5,
-            child: Text(
-              '52%',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+import 'package:flutter/material.dart';
 
 class RadialPercentWidget extends StatelessWidget {
   final Widget child;
-
   final double percent;
   final Color fillColor;
   final Color lineColor;
@@ -47,7 +17,7 @@ class RadialPercentWidget extends StatelessWidget {
     required this.lineColor,
     required this.freeColor,
     required this.lineWidth,
-  }) : super(key: key);
+}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,32 +25,33 @@ class RadialPercentWidget extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         CustomPaint(
-            painter: MyPainter(
-          percent: percent,
-          fillColor: fillColor,
-          lineColor: lineColor,
-          freeColor: freeColor,
+          painter: _RadialPercentPainter(
+              percent: percent,
+              fillColor: fillColor,
+              lineColor: lineColor,
+              freeColor: freeColor,
               lineWidth: lineWidth,
-        )),
-        Padding(
-          padding: const EdgeInsets.all(11.0),
-          child: Center(
-            child: child,
           ),
         ),
+        Center(
+          child: Padding(
+            padding: EdgeInsets.all(lineWidth * 1.5),
+            child: child,
+          ),
+        )
       ],
     );
   }
 }
 
-class MyPainter extends CustomPainter {
+class _RadialPercentPainter extends CustomPainter {
   final double percent;
   final Color fillColor;
   final Color lineColor;
   final Color freeColor;
   final double lineWidth;
 
-  MyPainter({
+  _RadialPercentPainter({
     required this.percent,
     required this.fillColor,
     required this.lineColor,

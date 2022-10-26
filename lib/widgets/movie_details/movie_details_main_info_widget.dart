@@ -89,7 +89,6 @@ class _ScroreWidget extends StatelessWidget {
           onPressed: () {},
           child: Row(
             children: const [
-              RadialPersentWdget(),
               Text('User Score'),
             ],
           ),
@@ -138,12 +137,12 @@ class _OverviewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const  overviewTitle = TextStyle(
+    const overviewTitle = TextStyle(
       color: Colors.white,
       fontSize: 18,
       fontWeight: FontWeight.w400,
     );
-    const  overviewText = TextStyle(
+    const overviewText = TextStyle(
       color: Colors.white,
       fontSize: 16,
       fontWeight: FontWeight.w400,
@@ -180,7 +179,7 @@ class _PeopleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const  namesStyle = TextStyle(
+    const namesStyle = TextStyle(
       color: Colors.white,
       fontSize: 16,
       fontWeight: FontWeight.w400,
