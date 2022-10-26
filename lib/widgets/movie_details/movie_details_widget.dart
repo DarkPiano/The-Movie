@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/widgets/movie_details/movie_details_main_info_widget.dart';
+import 'package:the_novie_db/widgets/movie_details/movie_details_main_screen_cast_widget.dart';
 
 class MovieDetailsWidget extends StatefulWidget {
   final int movieId;
@@ -27,6 +28,8 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
           physics: const BouncingScrollPhysics(),
           children: const [
             MovieDetailsMainInfoWidget(),
+            SizedBox(height: 30),
+            MovieDetailsMainScreenCastWidget(),
           ],
         ),
       ),

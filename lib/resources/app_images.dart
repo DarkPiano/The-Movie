@@ -16,4 +16,5 @@ class AppImages {
       'images/Fullmetal_alchemist-_kanketsuhen_fukushusha_scar-p1.jpg';
   static const String theBatman = 'images/The_batman.jpg';
   static const String thePeripheral = 'images/The_peripheral.jpg';
+  static const String actor = 'images/actor.png';
 }

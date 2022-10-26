@@ -17,9 +17,7 @@ class MovieDetailsMainInfoWidget extends StatelessWidget {
         _ScroreWidget(),
         _SummeryWidget(),
         _OverviewWidget(),
-        SizedBox(
-          height: 20,
-        ),
+        SizedBox(height: 20),
         _PeopleWidget(),
       ],
     );
