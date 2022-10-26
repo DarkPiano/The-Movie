@@ -89,6 +89,19 @@ class _ScroreWidget extends StatelessWidget {
           onPressed: () {},
           child: Row(
             children: const [
+              SizedBox(
+                width: 45,
+                height: 45,
+                child: RadialPercentWidget(
+                  percent: 0.72,
+                  fillColor: Color.fromARGB(255, 10, 23, 25),
+                  lineColor: Color.fromARGB(255, 37, 203, 103),
+                  freeColor: Color.fromARGB(255, 25, 54, 31),
+                  lineWidth: 3,
+                  child: Text('72%'),
+                ),
+              ),
+              SizedBox(width: 10),
               Text('User Score'),
             ],
           ),
