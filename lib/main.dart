@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/widgets/auth/auth_widget.dart';
 import 'package:the_novie_db/widgets/main%20screen/main_screen_widget.dart';
-import 'package:the_novie_db/widgets/movie_details/movie_details_widget.dart';
+import 'package:the_novie_db/widgets/movie/movie_details/movie_details_widget.dart';
 
 import 'Theme/app_colors,dart.dart';
 

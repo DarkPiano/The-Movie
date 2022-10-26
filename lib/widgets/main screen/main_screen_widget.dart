@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../movie_list/movie_list_widget.dart';
+import 'package:the_novie_db/widgets/movie/movie_list/movie_list_widget.dart';
+import 'package:the_novie_db/widgets/series/series_list/series_list_widget.dart';
 
 class MainScreenWidget extends StatefulWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
         children: const [
           Text('News'),
           MovieListWidget(),
-          Text('Series'),
+          SeriesListWidget(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

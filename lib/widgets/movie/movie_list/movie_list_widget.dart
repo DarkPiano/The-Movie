@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../resources/resources.dart';
+import 'package:the_novie_db/resources/resources.dart';
 
 class Movie {
   final int id;
@@ -144,7 +144,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
     return Stack(
       children: [
         ListView.builder(
-          padding: const EdgeInsets.only(top: 70),
+          padding: const EdgeInsets.only(top: 70.0),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           physics: const BouncingScrollPhysics(),
           itemCount: _filterMovies.length,
