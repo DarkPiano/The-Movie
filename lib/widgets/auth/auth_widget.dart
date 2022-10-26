@@ -21,6 +21,7 @@ class _AuthWidgetState extends State<AuthWidget> {
       ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         children: const [
           _HeaderWidget(),
           // _HeaderWidget(),
