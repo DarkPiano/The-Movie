@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_novie_db/widgets/series/series_details/series_details_main_info_widget.dart';
 
 class SeriesDetailsWidget extends StatefulWidget {
   final int seriesId;
@@ -25,6 +26,7 @@ class _SeriesDetailsWidgetState extends State<SeriesDetailsWidget> {
         child: ListView(
           physics: const BouncingScrollPhysics(),
           children: const [
+            SeriesDetailsMainInfoWidget(),
             SizedBox(height: 30),
           ],
         ),
