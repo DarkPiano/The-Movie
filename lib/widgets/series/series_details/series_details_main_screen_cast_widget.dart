@@ -60,7 +60,7 @@ class SeriesDetailsMainScreenCastWidget extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: const [
                                 Text(
-                                  'Grace Caroline Currey',
+                                  'Aoi Yûki',
                                   maxLines: 2,
                                   style: TextStyle(
                                     fontSize: 16,
@@ -69,7 +69,7 @@ class SeriesDetailsMainScreenCastWidget extends StatelessWidget {
                                 ),
                                 SizedBox(height: 7),
                                 Text(
-                                  'Becky Connor',
+                                  'Lucy',
                                   maxLines: 4,
                                   style: TextStyle(
                                     fontSize: 16,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/widgets/movie/movie_list/movie_list_widget.dart';
+import 'package:the_novie_db/widgets/news/news_widget.dart';
 import 'package:the_novie_db/widgets/series/series_list/series_list_widget.dart';
 
 class MainScreenWidget extends StatefulWidget {
@@ -29,7 +30,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
       body: IndexedStack(
         index: _selectedTab,
         children: const [
-          Text('News'),
+          NewsWidget(),
           MovieListWidget(),
           SeriesListWidget(),
         ],
