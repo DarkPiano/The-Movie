@@ -126,7 +126,7 @@ class _SummeryWidget extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 70),
         child: Text(
-          'R, 08/10/2022, (UK) 1h 47m Thriller',
+          'R, 09/13/2022, (Japan, Poland, USA) 24m, Anime, Fantasy, Action',
           maxLines: 3,
           textAlign: TextAlign.center,
           style: TextStyle(
