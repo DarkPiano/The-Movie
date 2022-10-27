@@ -17,6 +17,7 @@ class SeriesDetailsMainInfoWidget extends StatelessWidget {
         _ScroreWidget(),
         _SummeryWidget(),
         _OverviewWidget(),
+        _PeopleWidget(),
       ],
     );
   }
@@ -162,10 +163,7 @@ class _OverviewWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
-          Text(
-            'Overview',
-            style: overviewTitle,
-          ),
+          Text('Overview', style: overviewTitle),
           SizedBox(height: 10),
           Text(
             'A Street Kid trying to survive in a technology and body '
@@ -179,3 +177,68 @@ class _OverviewWidget extends StatelessWidget {
     );
   }
 }
+
+class _PeopleWidget extends StatelessWidget {
+  const _PeopleWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const namesStyle = TextStyle(
+      color: Colors.white,
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+    );
+    const jobTitleStyle = TextStyle(
+      color: Colors.white,
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+    );
+
+    return Column(
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text('Jeffrey Dean Morgan', style: namesStyle),
+                Text('Director', style: jobTitleStyle),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text('Jeffrey Dean Morgan', style: namesStyle),
+                Text('Novel', style: jobTitleStyle),
+              ],
+            ),
+          ],
+        ),
+        const SizedBox(height: 20),
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text('Jeffrey Dean Morgan', style: namesStyle),
+                Text('Screenplay', style: jobTitleStyle),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text('Jeffrey Dean Morgan', style: namesStyle),
+                Text('Screenplay', style: jobTitleStyle),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+

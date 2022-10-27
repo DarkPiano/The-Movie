@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/widgets/series/series_details/series_details_main_info_widget.dart';
+import 'package:the_novie_db/widgets/series/series_details/series_details_main_screen_cast_widget.dart';
 
 class SeriesDetailsWidget extends StatefulWidget {
   final int seriesId;
@@ -28,6 +29,7 @@ class _SeriesDetailsWidgetState extends State<SeriesDetailsWidget> {
           children: const [
             SeriesDetailsMainInfoWidget(),
             SizedBox(height: 30),
+            SeriesDetailsMainScreenCastWidget(),
           ],
         ),
       ),

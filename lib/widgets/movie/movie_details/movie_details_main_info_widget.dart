@@ -163,10 +163,7 @@ class _OverviewWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
-          Text(
-            'Overview',
-            style: overviewTitle,
-          ),
+          Text('Overview', style: overviewTitle),
           SizedBox(height: 10),
           Text(
             'For best friends Becky (Grace Caroline Currey) and Hunter '
@@ -211,34 +208,20 @@ class _PeopleWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Text(
-                  'Jeffrey Dean Morgan',
-                  style: namesStyle,
-                ),
-                Text(
-                  'Director',
-                  style: jobTitleStyle,
-                ),
+                Text('Jeffrey Dean Morgan', style: namesStyle),
+                Text('Director', style: jobTitleStyle),
               ],
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Text(
-                  'Jeffrey Dean Morgan',
-                  style: namesStyle,
-                ),
-                Text(
-                  'Novel',
-                  style: jobTitleStyle,
-                ),
+                Text('Jeffrey Dean Morgan', style: namesStyle),
+                Text('Novel', style: jobTitleStyle),
               ],
             ),
           ],
         ),
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 20),
         Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -246,27 +229,15 @@ class _PeopleWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Text(
-                  'Jeffrey Dean Morgan',
-                  style: namesStyle,
-                ),
-                Text(
-                  'Screenplay',
-                  style: jobTitleStyle,
-                ),
+                Text('Jeffrey Dean Morgan', style: namesStyle),
+                Text('Screenplay', style: jobTitleStyle),
               ],
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Text(
-                  'Jeffrey Dean Morgan',
-                  style: namesStyle,
-                ),
-                Text(
-                  'Screenplay',
-                  style: jobTitleStyle,
-                ),
+                Text('Jeffrey Dean Morgan', style: namesStyle),
+                Text('Screenplay', style: jobTitleStyle),
               ],
             ),
           ],
