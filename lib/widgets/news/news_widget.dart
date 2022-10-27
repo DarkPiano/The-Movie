@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/resources/resources.dart';
+import 'package:the_novie_db/widgets/news/news_widget_whats_popular.dart';
 
 class NewsWidget extends StatelessWidget {
   const NewsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        _TopPosterWidget(),
-      ],
+    return ColoredBox(
+      color: Colors.white,
+      child: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: [
+          _TopPosterWidget(),
+          NewsWhatsPopularWidget(),
+        ],
+      ),
     );
   }
 }
