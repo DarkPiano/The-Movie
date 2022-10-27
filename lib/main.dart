@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:the_novie_db/widgets/auth/auth_widget.dart';
 import 'package:the_novie_db/widgets/main%20screen/main_screen_widget.dart';
 import 'package:the_novie_db/widgets/movie/movie_details/movie_details_widget.dart';
+import 'package:the_novie_db/widgets/series/series_details/series_details_widget.dart';
 
 import 'Theme/app_colors,dart.dart';
 
@@ -37,6 +38,14 @@ class MyApp extends StatelessWidget {
             return MovieDetailsWidget(movieId: arguments);
           } else {
             return MovieDetailsWidget(movieId: 0);
+          }
+        },
+        '/main_screen/series_details_widget': (context) {
+          final arguments = ModalRoute.of(context)?.settings.arguments;
+          if(arguments is int) {
+            return SeriesDetailsWidget(seriesId: arguments);
+          } else {
+            return SeriesDetailsWidget(seriesId: 0);
           }
         },
       },
