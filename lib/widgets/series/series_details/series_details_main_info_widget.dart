@@ -16,6 +16,7 @@ class SeriesDetailsMainInfoWidget extends StatelessWidget {
         ),
         _ScroreWidget(),
         _SummeryWidget(),
+        _OverviewWidget(),
       ],
     );
   }
@@ -135,6 +136,45 @@ class _SummeryWidget extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _OverviewWidget extends StatelessWidget {
+  const _OverviewWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const overviewTitle = TextStyle(
+      color: Colors.white,
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+    );
+    const overviewText = TextStyle(
+      color: Colors.white,
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+    );
+
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Text(
+            'Overview',
+            style: overviewTitle,
+          ),
+          SizedBox(height: 10),
+          Text(
+            'A Street Kid trying to survive in a technology and body '
+            'modification-obsessed city of the future. Having everything '
+            'to lose, he chooses to stay alive by becoming an Edgerunner, '
+            'a Mercenary outlaw also known as a Cyberpunk.',
+            style: overviewText,
+          ),
+        ],
       ),
     );
   }
