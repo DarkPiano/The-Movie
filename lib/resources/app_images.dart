@@ -26,4 +26,5 @@ class AppImages {
   static const String thePeripheral = 'images/The_peripheral.jpg';
   static const String theSandman = 'images/The_sandman.jpg';
   static const String actor = 'images/actor.png';
+  static const String newsTopHeader = 'images/newsTopHeader.jpg';
 }
