@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:the_novie_db/widgets/auth/auth_model.dart';
-import 'package:the_novie_db/widgets/auth/auth_widget.dart';
-import 'package:the_novie_db/widgets/main%20screen/main_screen_widget.dart';
-import 'package:the_novie_db/widgets/movie/movie_details/movie_details_widget.dart';
-import 'package:the_novie_db/widgets/series/series_details/series_details_widget.dart';
+import 'package:the_novie_db/ui/Theme/app_colors,dart.dart';
+import 'package:the_novie_db/ui/widgets/auth/auth_model.dart';
+import 'package:the_novie_db/ui/widgets/auth/auth_widget.dart';
+import 'package:the_novie_db/ui/widgets/main%20screen/main_screen_widget.dart';
+import 'package:the_novie_db/ui/widgets/movie/movie_details/movie_details_widget.dart';
+import 'package:the_novie_db/ui/widgets/series/series_details/series_details_widget.dart';
 
-import 'Theme/app_colors,dart.dart';
 
 void main() {
   runApp(const MyApp());

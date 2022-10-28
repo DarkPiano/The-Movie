@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/resources/resources.dart';
-import 'package:the_novie_db/widgets/elements/radial_precent_widget.dart';
+import 'package:the_novie_db/ui/widgets/elements/radial_precent_widget.dart';
 
-class MovieDetailsMainInfoWidget extends StatelessWidget {
-  const MovieDetailsMainInfoWidget({Key? key}) : super(key: key);
+class SeriesDetailsMainInfoWidget extends StatelessWidget {
+  const SeriesDetailsMainInfoWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +11,12 @@ class MovieDetailsMainInfoWidget extends StatelessWidget {
       children: const [
         _TopPosterWidget(),
         Padding(
-          padding: EdgeInsets.all(20.0),
-          child: _MovieNameWidget(),
+          padding: EdgeInsets.all(20),
+          child: _SeriesNameWidget(),
         ),
         _ScroreWidget(),
         _SummeryWidget(),
         _OverviewWidget(),
-        SizedBox(height: 20),
         _PeopleWidget(),
       ],
     );
@@ -31,20 +30,20 @@ class _TopPosterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: const [
-        Image(image: AssetImage(AppImages.fallTopHeader)),
+        Image(image: AssetImage(AppImages.cyberpunkTopHeader)),
         Positioned(
           top: 20,
           left: 20,
           bottom: 20,
-          child: Image(image: AssetImage(AppImages.fall)),
-        )
+          child: Image(image: AssetImage(AppImages.cyberpunk)),
+        ),
       ],
     );
   }
 }
 
-class _MovieNameWidget extends StatelessWidget {
-  const _MovieNameWidget({Key? key}) : super(key: key);
+class _SeriesNameWidget extends StatelessWidget {
+  const _SeriesNameWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +53,7 @@ class _MovieNameWidget extends StatelessWidget {
       text: const TextSpan(
         children: [
           TextSpan(
-            text: 'Fall',
+            text: 'Cyberpunk: Edgerunners',
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
@@ -62,7 +61,7 @@ class _MovieNameWidget extends StatelessWidget {
             ),
           ),
           TextSpan(
-            text: ' (2022)',
+            text: '2022',
             style: TextStyle(
               color: Colors.grey,
               fontSize: 16,
@@ -91,12 +90,12 @@ class _ScroreWidget extends StatelessWidget {
                 width: 45,
                 height: 45,
                 child: RadialPercentWidget(
-                  percent: 0.72,
+                  percent: 0.90,
                   fillColor: Color.fromARGB(255, 10, 23, 25),
                   lineColor: Color.fromARGB(255, 37, 203, 103),
                   freeColor: Color.fromARGB(255, 25, 54, 31),
                   lineWidth: 3,
-                  child: Text('72%'),
+                  child: Text('90%'),
                 ),
               ),
               SizedBox(width: 10),
@@ -129,7 +128,7 @@ class _SummeryWidget extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 70),
         child: Text(
-          'R, 08/10/2022, (UK) 1h 47m Thriller',
+          'R, 09/13/2022, (Japan, Poland, USA) 24m, Anime, Fantasy, Action',
           maxLines: 3,
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -158,22 +157,19 @@ class _OverviewWidget extends StatelessWidget {
       fontSize: 16,
       fontWeight: FontWeight.w400,
     );
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           Text('Overview', style: overviewTitle),
           SizedBox(height: 10),
           Text(
-            'For best friends Becky (Grace Caroline Currey) and Hunter '
-            '(Virginia Gardner), life is all about conquering fears and pushing '
-            'limits. But after they climb 2,000 feet to the top of a remote, '
-            'abandoned radio tower, they find themselves stranded with no way '
-            'down. Now Becky and Hunter’s expert climbing skills will be put to '
-            'the ultimate test as they desperately fight to survive the elements,'
-            ' a lack of supplies, and vertigo-inducing heights in this '
-            'adrenaline-fueled thriller co-starring Jeffrey Dean Morgan.',
+            'A Street Kid trying to survive in a technology and body '
+            'modification-obsessed city of the future. Having everything '
+            'to lose, he chooses to stay alive by becoming an Edgerunner, '
+            'a Mercenary outlaw also known as a Cyberpunk.',
             style: overviewText,
           ),
         ],
@@ -192,7 +188,6 @@ class _PeopleWidget extends StatelessWidget {
       fontSize: 16,
       fontWeight: FontWeight.w400,
     );
-
     const jobTitleStyle = TextStyle(
       color: Colors.white,
       fontSize: 14,
@@ -246,3 +241,4 @@ class _PeopleWidget extends StatelessWidget {
     );
   }
 }
+

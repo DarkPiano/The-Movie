@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/resources/resources.dart';
-import 'package:the_novie_db/widgets/elements/radial_precent_widget.dart';
+import 'package:the_novie_db/ui/widgets/elements/radial_precent_widget.dart';
 
 class NewsTrailersWidget extends StatelessWidget {
   const NewsTrailersWidget({Key? key}) : super(key: key);

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/resources/resources.dart';
-import 'package:the_novie_db/widgets/news/news_widget_free_to_watch.dart';
-import 'package:the_novie_db/widgets/news/news_widget_trailers.dart';
-import 'package:the_novie_db/widgets/news/news_widget_trending.dart';
-import 'package:the_novie_db/widgets/news/news_widget_whats_popular.dart';
+import 'package:the_novie_db/ui/widgets/news/news_widget_free_to_watch.dart';
+import 'package:the_novie_db/ui/widgets/news/news_widget_trailers.dart';
+import 'package:the_novie_db/ui/widgets/news/news_widget_trending.dart';
+import 'package:the_novie_db/ui/widgets/news/news_widget_whats_popular.dart';
 
 class NewsWidget extends StatelessWidget {
   const NewsWidget({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class NewsWidget extends StatelessWidget {
       color: Colors.white,
       child: ListView(
         physics: const BouncingScrollPhysics(),
-        children: [
+        children: const [
           _TopPosterWidget(),
           NewsWhatsPopularWidget(),
           NewsFreeToWatchWidget(),

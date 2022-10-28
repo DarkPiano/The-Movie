@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/resources/resources.dart';
-import 'package:the_novie_db/widgets/elements/radial_precent_widget.dart';
+import 'package:the_novie_db/ui/widgets/elements/radial_precent_widget.dart';
 
-class NewsFreeToWatchWidget extends StatelessWidget {
-  const NewsFreeToWatchWidget({Key? key}) : super(key: key);
+class NewsTrendingWidget extends StatelessWidget {
+  const NewsTrendingWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class NewsFreeToWatchWidget extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
           child: Text(
-            'Free To Watch',
+            'Trending',
             style: TextStyle(
               color: Colors.black,
               fontSize: 17,

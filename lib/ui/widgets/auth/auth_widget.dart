@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:the_novie_db/widgets/auth/auth_model.dart';
+import 'package:the_novie_db/ui/widgets/auth/auth_model.dart';
 import '../../Theme/button_style.dart';
 
 class AuthWidget extends StatefulWidget {
@@ -181,40 +181,3 @@ class _ErrorMessageWidget extends StatelessWidget {
     );
   }
 }
-
-// final _loginTextController = TextEditingController(text: 'admin');
-// final _passwordTextController = TextEditingController(text: 'admin');
-// String? errorText;
-
-// class _FormWidget extends StatefulWidget {
-//   const _FormWidget({Key? key}) : super(key: key);
-//
-//   @override
-//   State<_FormWidget> createState() => _FormWidgetState();
-// }
-
-// class _FormWidgetState extends State<_FormWidget> {
-//   final _loginTextController = TextEditingController(text: 'admin');
-//   final _passwordTextController = TextEditingController(text: 'admin');
-//   String? errorText;
-//
-//   void _auth() {
-//     final login = _loginTextController.text;
-//     final password = _passwordTextController.text;
-//     if (login == 'admin' && password == 'admin') {
-//       errorText = null;
-//       final navigator = Navigator.of(context);
-//       //pushNamed добавление нового стека
-//       navigator.pushNamed('/main_screen');
-//       //pushReplacementNamed замена старого стека на новый
-//       // navigator.pushReplacementNamed('/main_screen');
-//     } else {
-//       errorText = 'Invalid username or password';
-//     }
-//     setState(() {});
-//   }
-//
-//   void _resetPassword() {
-//     print('reset password');
-//   }
-// }
