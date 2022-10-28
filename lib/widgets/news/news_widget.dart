@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/resources/resources.dart';
+import 'package:the_novie_db/widgets/news/news_widget_free_to_watch.dart';
+import 'package:the_novie_db/widgets/news/news_widget_trailers.dart';
+import 'package:the_novie_db/widgets/news/news_widget_trending.dart';
 import 'package:the_novie_db/widgets/news/news_widget_whats_popular.dart';
 
 class NewsWidget extends StatelessWidget {
@@ -14,6 +17,9 @@ class NewsWidget extends StatelessWidget {
         children: [
           _TopPosterWidget(),
           NewsWhatsPopularWidget(),
+          NewsFreeToWatchWidget(),
+          NewsTrailersWidget(),
+          NewsTrendingWidget(),
         ],
       ),
     );

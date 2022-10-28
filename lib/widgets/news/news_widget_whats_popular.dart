@@ -10,7 +10,7 @@ class NewsWhatsPopularWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
           child: Text(
             'What`s Popular',
@@ -22,21 +22,21 @@ class NewsWhatsPopularWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: SizedBox(
             height: 275,
             child: ListView.builder(
               itemCount: 20,
               itemExtent: 190,
               scrollDirection: Axis.horizontal,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black.withOpacity(0.2)),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withOpacity(0.1),
@@ -49,7 +49,7 @@ class NewsWhatsPopularWidget extends StatelessWidget {
                       borderRadius: const BorderRadius.all(Radius.circular(8)),
                       clipBehavior: Clip.hardEdge,
                       child: Column(
-                        children: [
+                        children: const [
                           Image(image: AssetImage(AppImages.cyberpunk)),
                           // _descriptionWidget(),
                         ],
@@ -74,10 +74,10 @@ class _descriptionWidget extends StatelessWidget {
     return ColoredBox(
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: const [
             SizedBox(
               width: 45,
               height: 45,
