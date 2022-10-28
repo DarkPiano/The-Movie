@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:the_novie_db/widgets/auth/auth_model.dart';
 import '../../Theme/button_style.dart';
 
 class AuthWidget extends StatefulWidget {
@@ -78,45 +79,16 @@ class _HeaderWidget extends StatelessWidget {
   }
 }
 
-class _FormWidget extends StatefulWidget {
+class _FormWidget extends StatelessWidget {
   const _FormWidget({Key? key}) : super(key: key);
 
   @override
-  State<_FormWidget> createState() => _FormWidgetState();
-}
-
-class _FormWidgetState extends State<_FormWidget> {
-  final _loginTextController = TextEditingController(text: 'admin');
-  final _passwordTextController = TextEditingController(text: 'admin');
-  String? errorText;
-
-  void _auth() {
-    final login = _loginTextController.text;
-    final password = _passwordTextController.text;
-    if (login == 'admin' && password == 'admin') {
-      errorText = null;
-      final navigator = Navigator.of(context);
-      //pushNamed добавление нового стека
-      navigator.pushNamed('/main_screen');
-      //pushReplacementNamed замена старого стека на новый
-      // navigator.pushReplacementNamed('/main_screen');
-    } else {
-      errorText = 'Invalid username or password';
-    }
-    setState(() {});
-  }
-
-  void _resetPassword() {
-    print('reset password');
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final model = AuthProvider.read(context)?.model;
     const textStyle = TextStyle(
       fontSize: 16,
       color: Color(0xFF212529),
     );
-    // const color = Color(0xFF01B4E4);
     const textFieldDecoration = InputDecoration(
       border: OutlineInputBorder(),
       contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -125,30 +97,23 @@ class _FormWidgetState extends State<_FormWidget> {
         borderSide: BorderSide(color: Colors.blue),
       ),
     );
-    final errorText = this.errorText;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (errorText != null) ...[
-          Text(
-            errorText,
-            style: const TextStyle(fontSize: 17, color: Colors.red),
-          ),
-          const SizedBox(height: 20),
-        ],
+        const _ErrorMessageWidget(),
         const Text('Username', style: textStyle),
         const SizedBox(height: 5),
         TextField(
           maxLength: 14,
           maxLengthEnforcement: MaxLengthEnforcement.enforced,
-          controller: _loginTextController,
+          controller: model?.loginTextController,
           decoration: textFieldDecoration,
         ),
         const SizedBox(height: 10),
         const Text('Password', style: textStyle),
         const SizedBox(height: 5),
         TextField(
-          controller: _passwordTextController,
+          controller: model?.passwordTextController,
           decoration: textFieldDecoration,
           maxLength: 20,
           //Обязательно для поля ввода пароля
@@ -161,24 +126,11 @@ class _FormWidgetState extends State<_FormWidget> {
         const SizedBox(height: 10),
         Row(
           children: [
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(const Color(0xFF01B4E4)),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-                textStyle: MaterialStateProperty.all(
-                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                ),
-                padding: MaterialStateProperty.all(
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 8)),
-              ),
-              onPressed: _auth,
-              child: const Text('Login'),
-            ),
+            const _AuthButtonWidget(),
             const SizedBox(width: 20),
             TextButton(
               style: AppButtonStyle.linkButton,
-              onPressed: _resetPassword,
+              onPressed: () {},
               child: const Text('Reset password'),
             ),
           ],
@@ -187,3 +139,82 @@ class _FormWidgetState extends State<_FormWidget> {
     );
   }
 }
+
+class _AuthButtonWidget extends StatelessWidget {
+  const _AuthButtonWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final model = AuthProvider.watch(context)?.model;
+    final onPressed =
+        model?.canStartAuth == true ? () => model?.auth(context) : null;
+
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(const Color(0xFF01B4E4)),
+        foregroundColor: MaterialStateProperty.all(Colors.white),
+        textStyle: MaterialStateProperty.all(
+          const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+        ),
+        padding: MaterialStateProperty.all(
+            const EdgeInsets.symmetric(horizontal: 15, vertical: 8)),
+      ),
+      child: const Text('Login'),
+    );
+  }
+}
+
+class _ErrorMessageWidget extends StatelessWidget {
+  const _ErrorMessageWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final errorMessage = AuthProvider.watch(context)?.model.errorMessage;
+    if (errorMessage == null) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20.0),
+      child: Text(
+        errorMessage,
+        style: const TextStyle(fontSize: 17, color: Colors.red),
+      ),
+    );
+  }
+}
+
+// final _loginTextController = TextEditingController(text: 'admin');
+// final _passwordTextController = TextEditingController(text: 'admin');
+// String? errorText;
+
+// class _FormWidget extends StatefulWidget {
+//   const _FormWidget({Key? key}) : super(key: key);
+//
+//   @override
+//   State<_FormWidget> createState() => _FormWidgetState();
+// }
+
+// class _FormWidgetState extends State<_FormWidget> {
+//   final _loginTextController = TextEditingController(text: 'admin');
+//   final _passwordTextController = TextEditingController(text: 'admin');
+//   String? errorText;
+//
+//   void _auth() {
+//     final login = _loginTextController.text;
+//     final password = _passwordTextController.text;
+//     if (login == 'admin' && password == 'admin') {
+//       errorText = null;
+//       final navigator = Navigator.of(context);
+//       //pushNamed добавление нового стека
+//       navigator.pushNamed('/main_screen');
+//       //pushReplacementNamed замена старого стека на новый
+//       // navigator.pushReplacementNamed('/main_screen');
+//     } else {
+//       errorText = 'Invalid username or password';
+//     }
+//     setState(() {});
+//   }
+//
+//   void _resetPassword() {
+//     print('reset password');
+//   }
+// }

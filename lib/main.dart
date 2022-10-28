@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_novie_db/widgets/auth/auth_model.dart';
 import 'package:the_novie_db/widgets/auth/auth_widget.dart';
 import 'package:the_novie_db/widgets/main%20screen/main_screen_widget.dart';
 import 'package:the_novie_db/widgets/movie/movie_details/movie_details_widget.dart';
@@ -29,7 +30,10 @@ class MyApp extends StatelessWidget {
         )
       ),
       routes: {
-        '/auth': (context) => const AuthWidget(),
+        '/auth': (context) => AuthProvider(
+          model: AuthModel(),
+          child: const AuthWidget(),
+        ),
         '/main_screen': (context) => const MainScreenWidget(),
         '/main_screen/movie_details_widget': (context) {
           final arguments = ModalRoute.of(context)?.settings.arguments;
