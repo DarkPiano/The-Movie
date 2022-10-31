@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:the_novie_db/domain/api_client/api_client.dart';
 import 'package:the_novie_db/domain/data_providers/session_data_provider.dart';
@@ -49,20 +51,9 @@ class AuthModel extends ChangeNotifier {
       notifyListeners();
       return;
     }
-    _sessionDataProvider.sessionId = sessionId;
-    // Navigator.of(context).pushNamed('/main_screen');
-
-    // if(_errorMessage != null){
-    //   notifyListeners();
-    //   return;
-    // }
-    //
-    // if(sessionId == null) {
-    //   _errorMessage = 'Unknown error, please try again';
-    //   notifyListeners();
-    //   return;
-    // }
-    // await _sessionDataProvider.setSessionId(sessionId);
+    // _sessionDataProvider.sessionId = sessionId;
+    await _sessionDataProvider.setSessionId(sessionId);
+    unawaited(Navigator.of(context).pushNamed('/main_screen'));
     // Navigator.of(context).pushNamed('/main_screen');
   }
 }
