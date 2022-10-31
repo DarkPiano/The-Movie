@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_novie_db/resources/resources.dart';
+import 'package:the_novie_db/ui/navigation/main_navigation.dart';
 
 class Series {
   final int id;
@@ -123,7 +124,7 @@ class _SeriesListWidgetState extends State<SeriesListWidget> {
   void _onSeriesTab(int index) {
     final id = _series[index].id;
     Navigator.of(context).pushNamed(
-      '/main_screen/series_details_widget',
+      MainNavigationRouteNames.movieDetails,
       arguments: id,
     );
   }
