@@ -9,8 +9,6 @@ class AuthModel extends ChangeNotifier {
   final _apiClient = ApiClient();
   final _sessionDataProvider = SessionDataProvider();
 
-  // final _sessionDataProvider = SessionDataProvider();
-
   final loginTextController = TextEditingController();
   final passwordTextController = TextEditingController();
 
@@ -56,12 +54,10 @@ class AuthModel extends ChangeNotifier {
       notifyListeners();
       return;
     }
-    // _sessionDataProvider.sessionId = sessionId;
     await _sessionDataProvider.setSessionId(sessionId);
     unawaited(
-      Navigator.of(context).pushNamed(MainNavigationRouteNames.mainScreen),
+      Navigator.of(context).pushReplacementNamed(MainNavigationRouteNames.mainScreen),
     );
-    // Navigator.of(context).pushNamed('/main_screen');
   }
 }
 

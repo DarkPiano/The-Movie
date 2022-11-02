@@ -66,3 +66,22 @@ class _TopPosterWidget extends StatelessWidget {
     );
   }
 }
+
+
+// class NewsWidget extends StatelessWidget {
+//   const NewsWidget({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListView(
+//       physics: BouncingScrollPhysics(),
+//       children: [
+//         const _TopPosterWidget(),
+//         const NewsWhatsPopularWidget(),
+//         const NewsFreeToWatchWidget(),
+//         const NewsTrailersWidget(),
+//         const NewsTrendingWidget(),
+//       ],
+//     );
+//   }
+// }

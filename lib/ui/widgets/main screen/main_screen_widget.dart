@@ -26,6 +26,12 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('TMDB'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          )
+        ],
       ),
       body: IndexedStack(
         index: _selectedTab,
