@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_novie_db/library/widgets/inherited/provider.dart';
 import 'package:the_novie_db/ui/widgets/auth/auth_model.dart';
 import 'package:the_novie_db/ui/widgets/auth/auth_widget.dart';
 import 'package:the_novie_db/ui/widgets/main%20screen/main_screen_widget.dart';
@@ -16,7 +17,7 @@ class MainNavifation {
       : MainNavigationRouteNames.auth;
 
   final routes = <String, Widget Function(BuildContext)>{
-    MainNavigationRouteNames.auth: (context) => AuthProvider(
+    MainNavigationRouteNames.auth: (context) => NotifierProvider(
           model: AuthModel(),
           child: const AuthWidget(),
         ),
@@ -37,12 +38,3 @@ class MainNavifation {
     }
   }
 }
-
-// '/main_screen/series_details_widget': (context) {
-// final arguments = ModalRoute.of(context)?.settings.arguments;
-// if (arguments is int) {
-// return SeriesDetailsWidget(seriesId: arguments);
-// } else {
-// return SeriesDetailsWidget(seriesId: 0);
-// }
-// },
