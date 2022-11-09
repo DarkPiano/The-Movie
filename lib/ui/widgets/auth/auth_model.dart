@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:the_novie_db/domain/api_client/api_client.dart';
@@ -40,9 +41,20 @@ class AuthModel extends ChangeNotifier {
         username: login,
         password: password,
       );
-    } catch (e) {
-      _errorMessage = 'Wrong username and password!';
+    } on ApiClientException catch (e) {
+      switch (e.type) {
+        case ApiClientExceptionType.Network:
+          _errorMessage = 'Server not available check your internet connection';
+          break;
+        case ApiClientExceptionType.Auth:
+          _errorMessage = 'Wrong username and password';
+          break;
+        case ApiClientExceptionType.Other:
+          _errorMessage = 'An error has occurred, please try again :)';
+          break;
+      }
     }
+
     _isAuthProgress = false;
     if (_errorMessage != null) {
       notifyListeners();
